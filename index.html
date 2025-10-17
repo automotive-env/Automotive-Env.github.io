@@ -32,21 +32,46 @@
 <body>
   <div class="wrap">
     <header>
-      <h1>benchmarking multimodal agents in vehicle interface systems</h1>
-      <p class="lead">
-        A minimal paper-style project page. Below is a short demo video that loops automatically.
-        Replace this text with a one-sentence description of your contribution.
+      <h1>AUTOMOTIVE-ENV: BENCHMARKING MULTIMODAL AGENTS IN VEHICLE INTERFACE SYSTEMS</h1>
+
+      <!-- authors -->
+      <p style="margin:.4rem 0 0; font-weight:600;">
+        Junfeng Yan*<sup>1</sup>, Biao Wu*<sup>1</sup>, Meng Fang<sup>2</sup>, Ling Chen<sup>1</sup>
       </p>
+      <p style="margin:.2rem 0 1rem; color:#9aa4b2;">
+        <sup>1</sup> Australian Artificial Intelligence Institute, Sydney, Australia &nbsp;&nbsp;|&nbsp;&nbsp;
+        <sup>2</sup> University of Liverpool, Liverpool, United Kingdom &nbsp;&nbsp;|&nbsp;&nbsp; * equal contribution
+      </p>
+
+      <!-- short lead -->
+      <p class="lead">
+        A minimal paper-style project page for AUTOMOTIVE-ENV. Below you’ll find the abstract and a looping demo video.
+      </p>
+
       <div class="badgebar">
-        <!-- Optional quick links; update or remove as needed -->
+        <!-- update these links as you publish assets -->
         <a class="badge" href="#" target="_blank" rel="noopener">paper (pdf)</a>
         <a class="badge" href="#" target="_blank" rel="noopener">code</a>
         <a class="badge" href="#" target="_blank" rel="noopener">dataset</a>
       </div>
     </header>
 
+    <!-- abstract -->
+    <section class="card" aria-label="abstract" style="margin-bottom:18px;">
+      <h2 style="margin:0 0 10px; font-size:1.15rem; letter-spacing:.02em;">abstract</h2>
+      <p style="margin:0; line-height:1.6;">
+        Multimodal agents have demonstrated strong performance in general GUI interactions, but their application in automotive systems has been largely unexplored.
+        In-vehicle GUIs present distinct challenges: drivers’ limited attention, strict safety requirements, and complex location-based interaction patterns.
+        To address these challenges, we introduce Automotive-ENV, the first high-fidelity benchmark and interaction environment tailored for vehicle GUIs.
+        This platform defines 185 parameterized tasks spanning explicit control, implicit intent understanding, and safety-aware tasks, and provides structured multimodal observations with precise programmatic checks for reproducible evaluation.
+        Building on this benchmark, we propose ASURADA, a geo-aware multimodal agent that integrates GPS-informed context to dynamically adjust actions based on location, environmental conditions, and regional driving norms.
+        Experiments show that geo-aware information significantly improves success on safety-aware tasks, highlighting the importance of location-based context in automotive environments.
+        We will release Automotive-ENV, complete with all tasks and benchmarking tools, to further the development of safe and adaptive in-vehicle agents.
+      </p>
+    </section>
+
+    <!-- demo video -->
     <section class="card video" aria-label="demo">
-      <!-- Put demo.mp4 in the repo root, or change src to your path -->
       <video src="demo.mp4" autoplay muted loop playsinline controls></video>
     </section>
 
