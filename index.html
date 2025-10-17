@@ -1,29 +1,58 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Demo</title>
-    <style>
-      html, body { height: 100%; margin: 0; background: #0b0b0b; }
-      .wrap { height: 100%; display: grid; place-items: center; }
-      video { max-width: 100%; max-height: 100vh; outline: none; }
-      h1 { position: absolute; top: 12px; left: 16px; margin: 0; font: 600 16px/1.2 system-ui, sans-serif; color: #cfcfcf; opacity: .7; }
-    </style>
-  </head>
-  <body>
-    <h1>Demo</h1>
-    <div class="wrap">
-      <video
-        src="demo.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-        controls
-        preload="metadata">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>benchmarking multimodal agents in vehicle interface systems</title>
+  <meta name="description" content="Project page: a minimal paper-style intro with an embedded looped demo video." />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --fg: #e5e7eb;
+      --muted: #9aa4b2;
+      --card: #101217;
+      --border: rgba(255,255,255,0.08);
+      --maxw: 980px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 48px 20px 80px; }
+    header { text-align: center; margin-bottom: 28px; }
+    h1 { font-size: clamp(24px, 4vw, 40px); margin: 0 0 10px; letter-spacing: 0.3px; }
+    p.lead { color: var(--muted); margin: 0 auto 18px; max-width: 800px; line-height: 1.6; }
+    .badgebar { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 14px 0 22px; }
+    .badge { text-decoration: none; color: var(--fg); border: 1px solid var(--border); padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.06); font-weight: 600; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+    .video { overflow: hidden; }
+    video { width: 100%; height: auto; display: block; border-radius: 10px; }
+    footer { margin-top: 26px; text-align: center; color: var(--muted); font-size: 14px; }
+    a { color: #8ab4ff; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>benchmarking multimodal agents in vehicle interface systems</h1>
+      <p class="lead">
+        A minimal paper-style project page. Below is a short demo video that loops automatically.
+        Replace this text with a one-sentence description of your contribution.
+      </p>
+      <div class="badgebar">
+        <!-- Optional quick links; update or remove as needed -->
+        <a class="badge" href="#" target="_blank" rel="noopener">paper (pdf)</a>
+        <a class="badge" href="#" target="_blank" rel="noopener">code</a>
+        <a class="badge" href="#" target="_blank" rel="noopener">dataset</a>
+      </div>
+    </header>
+
+    <section class="card video" aria-label="demo">
+      <!-- Put demo.mp4 in the repo root, or change src to your path -->
+      <video src="demo.mp4" autoplay muted loop playsinline controls></video>
+    </section>
+
+    <footer>
+      © 2025 automotive-env — hosted on GitHub Pages.
+    </footer>
+  </div>
+</body>
 </html>
