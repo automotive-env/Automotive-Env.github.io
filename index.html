@@ -57,7 +57,7 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://github.com/automotive-env/AutmotiveEnv.github.io" target="_blank" rel="noopener">
+      <a class="navbar-item" href="https://automotive-env.github.io/" target="_blank" rel="noopener">
         <span class="icon"><i class="fab fa-github"></i></span>
       </a>
       <a class="navbar-item" href="https://arxiv.org/abs/2509.21143" target="_blank" rel="noopener">
@@ -130,28 +130,37 @@
   </div>
 </section>
 
-<!-- System overview (two stacked images with equal width) -->
-<section class="section">
+<!-- System overview (two stacked images + description) -->
+<section class="section" id="system-overview">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3 has-text-centered">System Overview</h2>
 
-        <!-- Image A: task overview (on top) -->
+        <!-- Top image: task overview -->
         <figure class="system-figure has-text-centered" style="margin-bottom:16px;">
-          <img class="sysimg" src="./static/images/demo_task.jpg" alt="Automotive-ENV task example">
+          <img class="sysimg" src="./static/images/demo_task.jpg" alt="Automotive-ENV task overview">
           <figcaption class="subtitle is-6" style="margin-top:8px;">
-            Figure 1a. Automotive-ENV task example.
+            Figure 1a. Automotive-ENV task overview.
           </figcaption>
         </figure>
 
-        <!-- Image B: architecture (below) -->
+        <!-- Bottom image: architecture -->
         <figure class="system-figure has-text-centered">
           <img class="sysimg" src="./static/images/demo_arch.jpg" alt="Automotive-ENV system architecture overview">
           <figcaption class="subtitle is-6" style="margin-top:8px;">
             Figure 1b. Automotive-ENV architecture overview.
           </figcaption>
         </figure>
+
+        <!-- Description under both images -->
+        <div class="content has-text-justified system-overview-desc">
+          <p>
+            Automotive OS-based environment where the agent observes the accessibility tree, screen, and GPS;
+            optionally consults GPS-contextualized web knowledge; and acts through tap screens and API calls.
+            Task success is determined by low-level programmatic checks of system signals.
+          </p>
+        </div>
 
       </div>
     </div>
