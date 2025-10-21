@@ -1,76 +1,238 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>benchmarking multimodal agents in vehicle interface systems</title>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AUTOMOTIVE-ENV: Benchmarking Multimodal Agents in Vehicle Interface Systems. A high-fidelity benchmark and environment for in-vehicle GUIs with 185 parameterized tasks and reproducible checks.">
+  <meta name="keywords" content="Automotive-ENV, multimodal agents, vehicle GUI, benchmark, ASURADA">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AUTOMOTIVE-ENV: Benchmarking Multimodal Agents in Vehicle Interface Systems</title>
+
+  <!-- (Optional) Google Analytics - remove if not needed -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
   <style>
-    :root {
-      --bg: #0b0c10;
-      --fg: #e5e7eb;
-      --muted: #9aa4b2;
-      --card: #101217;
-      --border: rgba(255,255,255,0.08);
-      --maxw: 980px;
-    }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji; }
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 48px 20px 80px; }
-    header { text-align: center; margin-bottom: 28px; }
-    h1 { font-size: clamp(24px, 4vw, 40px); margin: 0 0 10px; letter-spacing: 0.3px; }
-    p.lead { color: var(--muted); margin: 0 auto 18px; max-width: 800px; line-height: 1.6; }
-    .badgebar { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 14px 0 22px; }
-    .badge { text-decoration: none; color: var(--fg); border: 1px solid var(--border); padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.06); font-weight: 600; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
-    .video { overflow: hidden; }
-    video { width: 100%; height: auto; display: block; border-radius: 10px; }
-    footer { margin-top: 26px; text-align: center; color: var(--muted); font-size: 14px; }
-    a { color: #8ab4ff; }
+    /* Small tweaks to match paper-style, white background, black text */
+    body { background: #ffffff; color: #111; }
+    .hero { background: #fff; }
+    .publication-title { letter-spacing: -0.02em; }
+    .publication-links .button { margin: 0 6px 8px; }
+    .system-figure img { max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; }
+    .subtitle { color: #444; }
+    .footer { background: #fafafa; }
+    /* Remove heavy separators if any exist in your local index.css */
+    section, .hero, .navbar { border-bottom: 0 !important; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>AUTOMOTIVE-ENV: BENCHMARKING MULTIMODAL AGENTS IN VEHICLE INTERFACE SYSTEMS</h1>
 
-      <!-- authors -->
-      <p style="margin:.4rem 0 0; font-weight:600;">
-        Junfeng Yan*<sup>1</sup>, Biao Wu*<sup>1</sup>, Meng Fang<sup>2</sup>, Ling Chen<sup>1</sup>
-      </p>
-      <p style="margin:.2rem 0 1rem; color:#9aa4b2;">
-        <sup>1</sup> Australian Artificial Intelligence Institute, Sydney, Australia &nbsp;&nbsp;|&nbsp;&nbsp;
-        <sup>2</sup> University of Liverpool, Liverpool, United Kingdom
-      </p>
-
-
-        <div class="badgebar">
-        <a class="badge" href="https://arxiv.org/abs/2509.21143" target="_blank" rel="noopener">Paper</a>
-        <a class="badge" href="#" target="_blank" rel="noopener">Code: Release soon</a>
-        </div>
-    </header>
-
-    <!-- abstract -->
-    <section class="card" aria-label="abstract" style="margin-bottom:18px;">
-      <h2 style="margin:0 0 10px; font-size:1.15rem; letter-spacing:.02em;">abstract</h2>
-      <p style="margin:0; line-height:1.6;">
-        Multimodal agents have demonstrated strong performance in general GUI interactions, but their application in automotive systems has been largely unexplored.
-        In-vehicle GUIs present distinct challenges: drivers’ limited attention, strict safety requirements, and complex location-based interaction patterns.
-        To address these challenges, we introduce Automotive-ENV, the first high-fidelity benchmark and interaction environment tailored for vehicle GUIs.
-        This platform defines 185 parameterized tasks spanning explicit control, implicit intent understanding, and safety-aware tasks, and provides structured multimodal observations with precise programmatic checks for reproducible evaluation.
-        Building on this benchmark, we propose ASURADA, a geo-aware multimodal agent that integrates GPS-informed context to dynamically adjust actions based on location, environmental conditions, and regional driving norms.
-        Experiments show that geo-aware information significantly improves success on safety-aware tasks, highlighting the importance of location-based context in automotive environments.
-        We will release Automotive-ENV, complete with all tasks and benchmarking tools, to further the development of safe and adaptive in-vehicle agents.
-      </p>
-    </section>
-
-    <!-- demo video -->
-    <section class="card video" aria-label="demo">
-      <video src="demo.mp4" autoplay muted loop playsinline controls></video>
-    </section>
-
-    <footer>
-      © 2025 automotive-env — hosted on GitHub Pages.
-    </footer>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
   </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://github.com/automotive-env/AutmotiveEnv.github.io" target="_blank" rel="noopener">
+        <span class="icon"><i class="fab fa-github"></i></span>
+      </a>
+      <a class="navbar-item" href="https://arxiv.org/abs/2509.21143" target="_blank" rel="noopener">
+        <span class="icon"><i class="ai ai-arxiv"></i></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero: title, authors, links -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">AUTOMOTIVE-ENV: Benchmarking Multimodal Agents in Vehicle Interface Systems</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><strong>Junfeng Yan</strong><sup>*1</sup>,</span>
+            <span class="author-block"><strong>Biao Wu</strong><sup>*1</sup>,</span>
+            <span class="author-block"><strong>Meng Fang</strong><sup>2</sup>,</span>
+            <span class="author-block"><strong>Ling Chen</strong><sup>1</sup></span>
+          </div>
+
+          <div class="is-size-6 publication-authors" style="margin-top:6px;">
+            <span class="author-block"><sup>1</sup>Australian Artificial Intelligence Institute, Sydney, Australia</span><br>
+            <span class="author-block"><sup>2</sup>University of Liverpool, Liverpool, United Kingdom</span>
+          </div>
+
+          <div class="column has-text-centered" style="margin-top:16px;">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2509.21143"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://automotive-env.github.io/"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code(Coming soon)</span>
+                </a>
+              </span>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video (local mp4 like os-world's teaser section) -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <!-- Put your video at ./static/videos/demo.mp4 or update this path -->
+        <source src="./static/videos/demo.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered" style="margin-top:10px;">
+        A short looping demo showcasing Automotive-ENV tasks and agent behavior.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- System overview (two stacked images with equal width) -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">System Overview</h2>
+
+        <!-- Image A: task overview (on top) -->
+        <figure class="system-figure has-text-centered" style="margin-bottom:16px;">
+          <img class="sysimg" src="./static/images/demo_task.jpg" alt="Automotive-ENV task example">
+          <figcaption class="subtitle is-6" style="margin-top:8px;">
+            Figure 1a. Automotive-ENV task example.
+          </figcaption>
+        </figure>
+
+        <!-- Image B: architecture (below) -->
+        <figure class="system-figure has-text-centered">
+          <img class="sysimg" src="./static/images/demo_arch.jpg" alt="Automotive-ENV system architecture overview">
+          <figcaption class="subtitle is-6" style="margin-top:8px;">
+            Figure 1b. Automotive-ENV architecture overview.
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Multimodal agents have demonstrated strong performance in general GUI interactions, but their
+            application in automotive systems has been largely unexplored. In-vehicle GUIs present distinct
+            challenges: drivers’ limited attention, strict safety requirements, and complex location-based
+            interaction patterns. To address these challenges, we introduce <strong>Automotive-ENV</strong>,
+            the first high-fidelity benchmark and interaction environment tailored for vehicle GUIs.
+          </p>
+          <p>
+            This platform defines <strong>185 parameterized tasks</strong> spanning explicit control,
+            implicit intent understanding, and safety-aware tasks, and provides structured multimodal
+            observations with precise programmatic checks for reproducible evaluation. Building on this
+            benchmark, we propose <strong>ASURADA</strong>, a geo-aware multimodal agent that integrates
+            GPS-informed context to dynamically adjust actions based on location, environmental conditions,
+            and regional driving norms.
+          </p>
+          <p>
+            Experiments show that geo-aware information significantly improves success on safety-aware tasks,
+            highlighting the importance of location-based context in automotive environments. We will release
+            Automotive-ENV, complete with all tasks and benchmarking tools, to further the development of
+            safe and adaptive in-vehicle agents.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{yan2025automotiveenvbenchmarkingmultimodalagents,
+  title={Automotive-ENV: Benchmarking Multimodal Agents in Vehicle Interface Systems},
+  author={Junfeng Yan and Biao Wu and Meng Fang and Ling Chen},
+  year={2025},
+  eprint={2509.21143},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/2509.21143}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://arxiv.org/abs/2509.21143" target="_blank" rel="noopener">
+        <i class="ai ai-arxiv"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/automotive-env/AutmotiveEnv.github.io" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website reuses the open-source Nerfies/OS-World page framework. Please remove analytics if you do not need it.
+          </p>
+          <p>
+            © 2025 automotive-env — Hosted on GitHub Pages.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
