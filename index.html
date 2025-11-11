@@ -33,39 +33,34 @@
   <script src="./static/js/index.js"></script>
 
   <style>
-    /* Small tweaks to match paper-style, white background, black text */
+    /* Paper-like tuning */
     body { background: #ffffff; color: #111; }
     .hero { background: #fff; }
     .publication-title { letter-spacing: -0.02em; }
     .publication-links .button { margin: 0 6px 8px; }
-    .system-figure img { max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; }
     .subtitle { color: #444; }
     .footer { background: #fafafa; }
-    /* Remove heavy separators if any exist in your local index.css */
-    section, .hero, .navbar { border-bottom: 0 !important; }
+
+    /* Center all section titles like the hero title */
+    .section .title.is-3 { text-align: center; }
+
+    /* Match content width to teaser video width (full container), overriding Bulma's 4/5 column */
+    .container.is-max-desktop .columns .column.is-four-fifths {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    /* Consistent media scaling */
+    .hero.teaser video#teaser { width: 100%; height: auto; display: block; }
+    .system-figure img,
+    #task-statistics img,
+    #results-analysis img { width: 100%; height: auto; display: block; border: 1px solid #eee; border-radius: 6px; }
+
+    /* Gentle spacing under the overview description */
+    .system-overview-desc { margin-top: 12px; }
   </style>
 </head>
 <body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://automotive-env.github.io/" target="_blank" rel="noopener">
-        <span class="icon"><i class="fab fa-github"></i></span>
-      </a>
-      <a class="navbar-item" href="https://arxiv.org/abs/2509.21143" target="_blank" rel="noopener">
-        <span class="icon"><i class="ai ai-arxiv"></i></span>
-      </a>
-    </div>
-  </div>
-</nav>
 
 <!-- Hero: title, authors, links -->
 <section class="hero">
@@ -98,13 +93,12 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://automotive-env.github.io/"
+                <a href="https://github.com/automotive-env/AutmotiveEnv.github.io"
                    class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
                   <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code(Coming soon)</span>
+                  <span>Code (coming soon)</span>
                 </a>
               </span>
-
             </div>
           </div>
 
@@ -114,46 +108,35 @@
   </div>
 </section>
 
-
-<!-- Teaser video (local mp4 like os-world's teaser section) -->
+<!-- Teaser video (local mp4). Put your video at ./static/videos/demo.mp4 -->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
-        <!-- Put your video at ./static/videos/demo.mp4 or update this path -->
         <source src="./static/videos/demo.mp4" type="video/mp4">
       </video>
-      <h2 class="subtitle has-text-centered" style="margin-top:10px;">
-        A short looping demo showcasing Automotive-ENV tasks and agent behavior.
-      </h2>
     </div>
   </div>
 </section>
 
-<!-- System overview (two stacked images + description) -->
+<!-- System overview: two stacked images + description -->
 <section class="section" id="system-overview">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3 has-text-centered">System Overview</h2>
 
-        <!-- Top image: task overview -->
         <figure class="system-figure has-text-centered" style="margin-bottom:16px;">
-          <img class="sysimg" src="./static/images/demo_task.jpg" alt="Automotive-ENV task overview">
+          <img src="./static/images/demo_task.jpg" alt="Automotive-ENV task overview">
           <figcaption class="subtitle is-6" style="margin-top:8px;">
-            Figure 1a. Automotive-ENV task overview.
+            Task instruction: Open the front windshield defroster, open the rear windshield defroster.
           </figcaption>
         </figure>
 
-        <!-- Bottom image: architecture -->
         <figure class="system-figure has-text-centered">
-          <img class="sysimg" src="./static/images/demo_arch.jpg" alt="Automotive-ENV system architecture overview">
-          <figcaption class="subtitle is-6" style="margin-top:8px;">
-            Figure 1b. Automotive-ENV architecture overview.
-          </figcaption>
+          <img src="./static/images/demo_arch.jpg" alt="Automotive-ENV system architecture overview">
         </figure>
 
-        <!-- Description under both images -->
         <div class="content has-text-justified system-overview-desc">
           <p>
             Automotive OS-based environment where the agent observes the accessibility tree, screen, and GPS;
@@ -161,7 +144,6 @@
             Task success is determined by low-level programmatic checks of system signals.
           </p>
         </div>
-
       </div>
     </div>
   </div>
@@ -201,11 +183,118 @@
   </div>
 </section>
 
+<!-- Task Statistics and Comparison -->
+<section class="section" id="task-statistics">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Task Statistics and Comparison</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            <strong>Automotive-ENV</strong> contains <em>185 parameterized tasks</em> spanning multiple dimensions:
+            modalities (screen, accessibility tree, GPS), intent types (explicit control, implicit intent,
+            safety-aware), and UI primitives (tap, long-press, slider, toggle, text). We report distributions
+            across these dimensions and across task categories (Maps, HVAC, Road, Phenomenon, Media, Apps, System, Comms).
+          </p>
+        </div>
+
+        <figure class="system-figure has-text-centered" style="margin-top:12px;">
+          <img src="./static/images/static.jpg" alt="Task distributions across dimensions and categories">
+          <figcaption class="subtitle is-6" style="margin-top:8px;">
+            Task distributions across different dimensions. (a) Distribution of tasks by task dimensions.
+            (b) Distribution of tasks across task categories (Maps, HVAC, Road, Phenomenon, Media, Apps, System, Comms).
+          </figcaption>
+        </figure>
+
+        <figure class="system-figure has-text-centered" style="margin-top:18px;">
+          <img src="./static/images/task_and_check.jpg" alt="Representative instructions and validation methods">
+          <figcaption class="subtitle is-6" style="margin-top:8px;">
+            Representative user instructions for in-vehicle tasks, categorized by task type, with corresponding validation methods.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Results and Analysis (+ Discussion & Conclusion appended at the end) -->
+<section class="section" id="results-analysis">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Results and Analysis</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            We evaluate multiple agent configurations on <strong>Automotive-ENV</strong>, reporting success
+            rates across General tasks (Explicit Control, Implicit Intent) and Safety-Aware tasks
+            (Driving Alignment, Environment Alerts). We also analyze the effect of GPS-aware context
+            on inference token usage and task-wise performance across hotspot categories.
+          </p>
+        </div>
+
+        <figure class="system-figure has-text-centered" style="margin-top:12px;">
+          <img src="./static/images/results.jpg" alt="Success rates of different agent configurations across task groups">
+          <figcaption class="subtitle is-6" style="margin-top:8px;">
+            Success rates (SR %) of different agent configurations on Automotive-ENV. Results are
+            reported across General tasks (Explicit Control, Implicit Intent) and Safety-Aware tasks
+            (Driving Alignment, Environment Alerts).
+          </figcaption>
+        </figure>
+
+        <figure class="system-figure has-text-centered" style="margin-top:18px;">
+          <img src="./static/images/task_and_check.jpg" alt="Token length distributions and task-wise performance with vs. without GPS">
+          <figcaption class="subtitle is-6" style="margin-top:8px;">
+            Comparison of inference tokens with and without GPS information. Left: distribution of
+            token lengths. Right: task-wise performance across hotspot categories.
+          </figcaption>
+        </figure>
+
+        <!-- Discussion -->
+        <div class="content has-text-justified" style="margin-top:28px;">
+          <h3 class="title is-4 has-text-centered">Discussion</h3>
+          <p>
+            GPS signals are indispensable for providing geographic context in automotive agents, yet they
+            are prone to disruptions in real-world environments such as tunnels, underground parking, or dense
+            urban canyons. These interruptions can cause temporary localization failures, directly undermining
+            navigation and geo-dependent decision-making. To address this limitation, large language models
+            (LLMs) can act as virtual sensors by leveraging their built-in knowledge of road networks together
+            with the last available GPS coordinates and timestamps. During short signal outages, the agent can
+            simulate intermediate positions and continue offering navigation or context-aware recommendations.
+            Once connectivity is restored, the simulated trajectory can be aligned with actual positioning
+            data. This capability highlights the potential of LLMs to complement imperfect sensor signals and
+            enhance robustness in safety-critical automotive applications.
+          </p>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="content has-text-justified" style="margin-top:18px;">
+          <h3 class="title is-4 has-text-centered">Conclusion</h3>
+          <p>
+            In this work, we present <strong>Automotive-ENV</strong>, the first large-scale benchmark explicitly designed for
+            evaluating multimodal agents in realistic automotive GUI environments. Unlike desktop or mobile
+            benchmarks, Automotive-ENV provides structured, reproducible, and geographically parameterized
+            tasks that capture the complexity of in-vehicle interaction under real-world constraints. Building on
+            this foundation, we propose <strong>ASURADA</strong>, a geo-adaptive agent capable of integrating GPS location
+            and contextual signals to deliver safe and personalized actions. Our experiments show that geo-context
+            integration not only improves task accuracy, especially in safety-critical settings, but also
+            reduces reasoning overhead by enabling proactive, context-driven planning. Together, Automotive-ENV
+            and ASURADA establish a foundation for the next generation of in-vehicle assistants that are
+            multimodal, safety-aware, and culturally adaptive, advancing the reliable deployment of autonomous
+            agents in high-stakes driving environments.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- BibTeX -->
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
+    <h2 class="title is-3 has-text-centered">BibTeX</h2>
     <pre><code>@misc{yan2025automotiveenvbenchmarkingmultimodalagents,
   title={Automotive-ENV: Benchmarking Multimodal Agents in Vehicle Interface Systems},
   author={Junfeng Yan and Biao Wu and Meng Fang and Ling Chen},
@@ -221,24 +310,27 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link" href="https://arxiv.org/abs/2509.21143" target="_blank" rel="noopener">
-        <i class="ai ai-arxiv"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/automotive-env/AutmotiveEnv.github.io" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content has-text-centered">
-          <p>
-            This website reuses the open-source Nerfies/OS-World page framework. Please remove analytics if you do not need it.
-          </p>
-          <p>
-            © 2025 automotive-env — Hosted on GitHub Pages.
-          </p>
-        </div>
-      </div>
+      <p>
+        This website adapts the open-source <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies/OS-World</a> page framework.
+        Template code © original authors, used under
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.
+      </p>
+      <p>
+        Site content (text, figures, video) © 2025 automotive-env.
+        Source for this page: <a href="https://github.com/automotive-env/AutmotiveEnv.github.io" target="_blank" rel="noopener">GitHub</a>.
+      </p>
+      <p>
+        <a class="icon-link" href="https://arxiv.org/abs/2509.21143" target="_blank" rel="noopener" title="arXiv">
+          <i class="ai ai-arxiv"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/automotive-env/AutmotiveEnv.github.io" target="_blank" rel="noopener" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a class="icon-link" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" title="CC BY-SA 4.0">
+          <i class="fab fa-creative-commons"></i>
+        </a>
+      </p>
+      <p>© 2025 automotive-env — Hosted on GitHub Pages.</p>
     </div>
   </div>
 </footer>
