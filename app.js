@@ -47,7 +47,7 @@ document.getElementById('copy-citation').addEventListener('click',async()=>{
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 if(!reducedMotion.matches && 'IntersectionObserver' in window){
  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
-  if(entry.isIntersecting){entry.target.animate([{opacity:.6,transform:'translateY(14px)'},{opacity:1,transform:'translateY(0)'}],{duration:650,easing:'cubic-bezier(.16,1,.3,1)'});observer.unobserve(entry.target);}
+  if(entry.isIntersecting){if(!reducedMotion.matches) entry.target.animate([{opacity:.6,transform:'translateY(14px)'},{opacity:1,transform:'translateY(0)'}],{duration:650,easing:'cubic-bezier(.16,1,.3,1)'});observer.unobserve(entry.target);}
  }),{threshold:.12});
  document.querySelectorAll('.section-heading,.finding,.pipeline,.failure-grid').forEach(el=>observer.observe(el));
 }
